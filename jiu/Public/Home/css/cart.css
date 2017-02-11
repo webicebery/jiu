@@ -1,0 +1,92 @@
+#cart-table{
+	width:1200px;
+	margin:15px -15px;
+}
+.cart-status{
+	float:left; 
+	width:510px; 
+	padding:25px 0 0 500px;
+}
+.cart-status .cart-status-bg,.cart-status-bg p{
+	background:url(../pic/icon2.png) 0 0 no-repeat #ffffff; 
+	height:35px; 
+	width:510px;
+}
+.cart-status p{
+	background-position:0 -40px;
+}
+
+
+.total-price{
+	width:1200px;
+	margin:0 auto;
+	text-align:right;
+	font-size:20px;
+	font-weight:bold;
+	color:#a10000;
+	margin-bottom:20px;
+	border-bottom:1px solid #ccc;
+}
+.cart-pay{
+	width:1200px;
+	margin:0 auto;
+}
+.pay-button{
+	float:right;
+	margin-bottom:20px;
+}
+
+.lecar_wap{
+	width: 980px;
+	height:290px;
+	margin: 0 auto;
+	margin-top:75px;
+	position: relative;
+}
+
+.lepay_wrap {
+    width: 980px;
+    background: #ffffff;
+    padding: 85px 0;
+    margin-top: 15px;
+    overflow: hidden;
+}
+.lepay_wrap .lepay_content {
+    width: 570px;
+    margin: 0 auto;
+}
+.lepay_wrap .none_shop {
+    background: url('../pic/index.png') 0 -220px no-repeat;
+    padding: 30px 0 0 105px;
+    height: 90px;
+    overflow: hidden;
+	text-align:center;
+	color: #333;
+	font: 12px/1.5 'Microsoft YaHei';
+}
+
+.submit_success p{
+	text-align:center;
+}
+
+#pay_bank{
+	width:800px;
+	height:400px;
+	margin:10px auto;
+	margin-bottom:30px;
+
+}
+.payway{
+	width: 980px;
+	height:400px;
+	margin: 0 auto;
+	margin-top:75px;
+	position: relative;
+}
+.passboxdiv {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    display: none;
+    width: 500px;
+    margin: 0 auto;

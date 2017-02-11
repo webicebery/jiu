@@ -1,0 +1,120 @@
+<extend name="./Public/Home/head/header.html"/>
+      <block name="hd-search">  
+        <div id="header-mn-z">
+            <div id="header-table">
+                <a href="#">
+                    <div class="logo"></div>
+                </a>
+            </div>
+            <div class="header-adv">广告</div>
+            <div id="header-search">
+            <div class="searchClass">
+                 <input id="searchContent" type="text" value="大宴肆方 壕礼不断 怎么买都划算！">
+                  <a id="searchBtn"  href="javascript:;"></a>
+                <div class="search-tips">
+                        <a href="#" target="_blank">葡萄酒</a>
+                        <a href="#" target="_blank">/白酒</a>
+                        <a href="#" target="_blank">/奔富</a>
+                        <a href="#" target="_blank">/拉菲</a>
+                        <a href="#" target="_blank">/轩尼诗</a>
+                        <a href="#" target="_blank">/名庄</a>
+                        <a href="#" target="_blank">/买酒送手机</a>
+                        <a href="#" target="_blank">/格鲁特超值优惠</a>
+                </div>
+            </div>
+        </div>  
+        
+       
+        <div  id="hd-cart" class="topCart" >
+            <a href="#">
+               <div id="cart-text" >我的购物车<span id="cart-num">0</span>件</div>
+            </a>
+            
+            <if condition="count($_SESSION['shopping']) LT 1">
+                        <div id="cart-show" style="height:auto;" class="cart-show">
+                            <span id="no-sp" style="font-size:12px;color:#A9A9A9">购物车还没有商品，赶紧选购吧！</span>
+                            <div id="sp-show"></div>
+                            <center><a href='#'><input type="button" id='go-sp' value="去购物"/></a></center>
+                        </div>
+                    <else/>
+                        <div id="cart-show" style="height:auto" class="cart-show">
+                            <div id="sp-show">
+                            <foreach name="_SESSION['shopping']" key='key' item='val'>
+                                <center>
+                                    <a href="#">
+                                    <div id="id-{$val['gid']}" class='gwkuang'>
+                                        <img src="#" height="50" width="50">
+                                        <div class='kuangzide'>{$val['g_name']}</div>
+                                        <li class='jiagelo'>￥{$val['g_price']}元　　x{$val.count}</li>
+                                    </div>
+                                    </a>
+                                </center>
+                            </foreach>
+                            </div>
+                            <center><a href='#'><button id='go-pay'>去结算</button></a></center>
+                        </div>
+                    </if>
+
+          </div>  
+</div>
+
+<script>
+    $('#hd-cart').mouseover(function(){
+        $('#cart-show').show();
+        $(this).css({
+            'border':'none',
+            'box-shadow':'1px 2px 1px 1px lightgray',
+            
+        });
+        $('#cart-text').css({
+            'background':"url('__PUBLIC__/Home/pic/icon.png')",
+            'background-position':'10px -423px',
+            'background-repeat':'no-repeat',
+            'background-color':"#F7F7F7",
+            'color':'black',
+        })
+        $('#cart-num').css({
+            'color':'black',
+        })
+    }).mouseout(function()
+    {
+        $('#cart-show').hide();
+        $(this).css({
+            'border':'1px solid #CCCCCC',
+            'box-shadow':'none',
+        });
+         $('#cart-text').css({
+            'background':"url('__PUBLIC__/Home/pic/icon.png')",
+            'background-position':'10px -47px',
+            'background-repeat':'no-repeat',
+            'background-color':"#a40c59",
+            'color':'white',
+        })
+        $('#cart-num').css({
+            'color':'white',
+        })
+    });
+</script>
+</block>
+
+
+
+</body>
+<script>
+    // 下拉菜单
+    $('document').ready(
+            function (){
+             $('li.dropdown').mouseover(function() {
+        $(this).addClass('open');
+    }).mouseout(function() {
+        $(this).removeClass('open');
+    });
+            }
+            );
+
+   
+
+  
+</script>
+   
+

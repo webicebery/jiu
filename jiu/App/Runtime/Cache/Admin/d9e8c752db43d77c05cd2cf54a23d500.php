@@ -1,0 +1,24 @@
+<?php if (!defined('THINK_PATH')) exit();?><!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-image: url('/jiu/Public/Admin/image/2.jpg');
+			background-repeat: no-repeat;
+		}
+		.word{
+			font-size:40px;
+			color:red;
+		}
+		.word2{
+			font-size:20px;
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<center style="margin-top:200px;"><span class="word">玖酒久,长长久"酒" <font class="word2">后台管理</font></span></center>
+</body>
+</html>

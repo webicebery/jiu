@@ -1,0 +1,143 @@
+<!--_meta 作为公共模版分离出去-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+	.div1{
+		float: left;
+		height: 41px;
+		background: gray;
+		width: 144px;
+		position:relative;
+	}
+	.div2{
+		text-align:center;
+		padding-top:12px;
+		font-size:15px;
+		font-weight:800
+	}
+	.inputstyle{
+	    width: 144px;
+	    height: 41px;
+	    cursor: pointer;
+	    font-size: 30px;
+	    outline: medium none;
+	    position: absolute;
+	    filter:alpha(opacity=0);
+	    -moz-opacity:0;
+	    opacity:0; 
+	    left:0px;
+	    top: 0px;
+	}
+</style>
+
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<LINK rel="Bookmark" href="/favicon.ico" >
+<LINK rel="Shortcut Icon" href="/favicon.ico" />
+
+
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/Hui-iconfont/1.0.7/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/icheck/icheck.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui.admin/css/style.css" />
+
+<!--/meta 作为公共模版分离出去-->
+
+<title> 管理员编辑 </title>
+</head>
+<body>
+<article class="page-container">
+	<form action="{:U('Admin/Adminer/edit_icon')}" class="form form-horizontal" id="form-admin-add" method="post" enctype="multipart/form-data">
+		<div><input type="hidden" name="id" value="{$data[0]['ad_id']}"></div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>当前头像：</label>
+			<div class="formControls ">
+				<img width="100px" src="__PUBLIC__/adminerIcon/{$data[0]['ad_icon']}" alt="">
+			</div>
+		</div>
+		
+		
+		
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>修改头像：</label>
+			<div class="formControls  div1">
+				<div class="div2">上传头像</div>
+				<input type="file" class="input-text inputstyle" name="ad_icon" id="ad_email" >
+			</div>
+		</div>
+
+		<div class="row cl">
+			<div class=" col-xs-offset-4 col-sm-offset-3">
+				<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;确认修改&nbsp;&nbsp;">
+			</div>
+		</div>
+	</form>
+</article>
+
+<!--_footer 作为公共模版分离出去--> 
+<script type="text/javascript" src="__PUBLIC__/lib/jquery/1.9.1/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="__PUBLIC__/lib/jquery-form/jquery-form.js"></script>  -->
+
+<script type="text/javascript" src="__PUBLIC__/lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="http://lib.h-ui.net/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/1.14.0/jquery.validate.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/1.14.0/validate-methods.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/1.14.0/messages_zh.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/static/h-ui.admin/js/H-ui.admin.js"></script>  
+ 
+<!--/_footer /作为公共模版分离出去--> 
+
+<!--请在下方写此页面业务相关的脚本--> 
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	
+	$("#form-admin-add").validate({
+		rules:{
+			ad_adminer:{
+				required:true,
+				minlength:4,
+				maxlength:16
+			},
+			ad_sex:{
+				required:true,
+			},
+			ad_tel:{
+				required:true,
+				isMobile:true,
+			},
+			ad_email:{
+				required:true,
+				email:true,
+			},
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		submitHandler:function(form){
+			$(form).ajaxSubmit();
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.$('.btn-refresh').click();
+			window.parent.location.reload();
+			parent.layer.close(index);
+			
+		}
+	});
+});
+</script> 
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>
+

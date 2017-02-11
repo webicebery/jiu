@@ -1,0 +1,179 @@
+
+
+
+
+
+/*			今日热卖					*/
+
+
+.todayHot{
+	/*border:1px solid red;*/
+	/*margin-left: 50px*/;
+	height:190px;
+	width:1200px;
+	text-align: center;
+}
+
+.todayHot-1{
+	margin-top:25px;
+	margin-left:540px;
+	float:left;
+}
+.todayHot-2{
+	margin-top:23px;
+	margin-left:3px;
+	/*margin-left:540px;*/
+	float:left;
+	font-size:22px;
+}
+.todayHot-3{
+	margin-top:2px;
+	margin-right:450px;
+	/*margin-left:540px;*/
+	float:right;
+	font-size:14px;
+	font-family:微软雅黑;
+
+}
+
+.todayHot-goods{
+	/*margin-left: 50px*/;
+	width:1202px;
+	/*border:1px solid gray;*/
+	height:320px;
+	/*position:relative;*/
+}
+
+.todayHot-goods-1{
+	/*margin-top:0px;*/
+	width:200px;
+	/*border:1px solid gray;*/
+	height:320px;
+	float:left;
+
+
+}
+
+/*.see-box{
+	width:200px;
+	border:2px solid yellow;
+	height:320px;
+	float:left;
+	overflow:hidden;
+
+}*/
+
+
+
+.goods-name{
+	width:180px;
+	margin-left: 8px;
+	margin-top: 14px;
+	height:20px;
+	/*border:1px solid red;*/
+	font-size:2px;
+	text-align: center;
+	overflow: hidden;
+
+}
+
+
+/*					今日热卖					*/
+.big_Box{
+	border:1px solid red;
+}
+
+/*					轮播商品				*/
+.tabs{
+	/*margin-left: 50px*/;
+	/*height:500px;*/
+}
+.menu {
+	float: left;
+	list-style-type: none;height:50px;
+	line-height:50px;
+	border-right:solid 1px #ccc;
+	float:left;
+	padding:0;
+	margin:0;
+}
+.menu li{
+
+	height:50px;
+	float:left;
+	width:240px;
+	text-align:center;
+	border:solid 1px #ccc;
+	border-right:none;
+	cursor:pointer;
+	font-family:微软雅黑;
+}
+.main{
+	float:left;
+	clear:left;
+	margin-bottom:20px;	
+}
+.menu .on{
+	border-top:solid 2px #a40000;
+	border-bottom:solid 1px #fff;
+}
+.tab{
+	height:420px;
+	width:1202px;
+	float:left;
+	clear:both;
+	border:solid 1px #ccc;
+	border-top:none;
+	/*line-height:200px;*/
+	/*text-align:center;*/
+	display: none;
+	/*overflow: hidden;*/
+}
+
+.big-img{
+	width:480px;
+	height:420px;
+	/*border: 1px solid red;*/
+	float: left;
+}
+
+
+
+
+/*				商品遍历浏览							*/
+
+.public-box{
+	height:466px;
+	/*border:1px solid red;*/
+	position: relative;
+}
+
+.left-box ,.center-box, .right-box{
+	float: left;
+	/*border:1px solid gray;*/
+}
+
+.left-box{
+	width:228px;
+	height:466px;
+}
+
+.center-box{
+	width:758px;
+	height:466px;
+}
+.right-box{
+	width:243px;
+	height:460px;
+}
+
+
+
+.zhezhao{
+	position:absolute;
+	border:1px solid gray;
+	width:378px;
+	height:230px;
+	left:417px;
+	overflow: hidden
+}

@@ -1,0 +1,236 @@
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	font:12px / 1.5 arial;
+}
+li{
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+	color:black;
+}
+.topnavall{
+	width:1220px;
+	height:32px;
+	line-height:32px;
+	margin:0 auto;
+	/*border:1px solid blue;*/
+	position:relative;
+	font-size:16px;
+}
+.topnavall1{
+	width:165px;
+	height:32px;
+	text-align: center;
+	background: black;
+	color:white;
+	z-index:3;
+}
+.topnavall2{
+	position:absolute;
+	left:165px;
+	top:0px;
+	font-size: 13px;
+}
+.topnavall2 li{
+	float:left;
+	padding-left:20px;
+}
+/******************左边导航**********************/
+.cate-nav{
+    width:1220px;
+    margin:0 auto;
+    /*border:1px solid red;*/
+    z-index:3;
+    position:relative;
+}
+.cate-nav-li{
+	height:49px;
+}
+/*分类导航 ul*/
+.cate-nav-ul{
+    position:absolute;
+}
+.cate-nav-ul li{
+    border-bottom:1px dotted #999999;
+    border-right:1px solid #ccc;
+	width:165px;
+	height:49px;
+	line-height:49px;
+
+}
+
+/* 分类的a链接*/
+.cate-link{
+    background:white;
+    display:block;
+    border-right:1px solid #ccc;
+    text-align: center;
+    /*padding:10px;*/
+}
+.cate-link:hover{
+	background: #5F5764;
+	color:white;
+}
+.cate-hidden-two{
+	color:#A40C59;
+    position:absolute;
+	left:0px;
+	top:0px;
+    margin-left:165px;
+    border:1px solid #ccc;
+    /*margin-top:-52px;*/
+    width:690px;
+	height:399px;
+    background:white;
+    /*padding:0 0 20px;*/
+	overflow: hidden;
+    display:none;
+    /*position:relative;*/
+}
+
+/*二级分类新式*/
+.cate-p{
+    font-weight:bold;
+    font-size:14px;
+    /*padding:10px 20px;*/
+    text-align:left;
+    border-bottom:1px dotted #999999;
+    /*border:1px solid #ccc;*/
+    /*float:left;*/
+    /*position:absolute;left:0px;*/
+}
+
+.cate-hidden-three{
+
+	width:345px;
+    text-align:left;
+    /*word-wrap:break-word;*/
+    /*padding:0px 20px;*/
+}
+
+.cate-hidden-three a{
+	margin-left:10px;
+	font-size: 14px;
+}
+#catethree:hover{
+	color:#A40C59;
+}
+.cate-nav-li:hover .cate-hidden-two{
+    display:block;
+}
+.zhanshi{
+	position:absolute;
+	left:350px;
+	top:20px;
+}
+/********************轮播图****************/
+.out{
+	width: 1600px;
+	height: 400px;
+	/*margin: 0 auto;*/
+	position: relative;
+}
+.img {
+	list-style-type: none;
+}
+.img li{
+	position: absolute;
+	top:0;
+	cursor: pointer;
+}
+.num{
+	list-style-type: none;
+	/*这个属性会使得text-align失效,所以下面手动写上宽度即可*/
+	position: absolute;
+	width: 100%;
+	bottom:0;
+	text-align: center;
+}
+.num li{
+	width: 20px;
+	height: 20px;
+	/*行高这个属性使得元素垂直居中*/
+	line-height: 20px;
+	text-align: center;
+	/*inline-block使得所有元素按行排列*/
+	display: inline-block;
+	background-color: #4a4a4a;
+	color: #fff;
+	border-radius: 50%;
+	/*鼠标放上去会有小手*/
+	cursor: pointer;
+}
+/*鼠标放到图片上的时候才显示btn*/
+.out:hover .btn{
+	display: block;
+}
+.btn{
+	width: 30px;
+	height: 50px;
+	position: absolute;
+	display: none;
+	/*通过top和margin来定位属性到垂直居中*/
+	top: 50%;
+	margin-top: -30px;
+	border: 0;
+	/*使用rgba可以修改透明度*/
+	background-color: rgba(0,0,0,.5);
+	color: #fff;
+}
+.left{
+	right: 280px;
+}
+.right{
+	right: 240px;
+}
+/*************商品评论****************/
+.buju{
+	width:1200px;
+	margin:0 auto;
+	position:relative;
+}
+.goodscomment{
+	width:950px;
+	height:850px;
+	position:absolute;
+	right:0;
+	border:1px solid red;
+	/*position:relative;*/
+}
+.commentbtn{
+	width:100px;
+	height:35px;
+	line-height:35px;
+	color:white;
+	text-align:center;
+	background: #A40E59;
+}
+.commentall{
+	position:relative;
+}
+.comment1{
+	width:700px;
+}
+.comment2{
+	width:150px;
+}
+/******************提交商品评价*********************/
+.commentbuju{
+	width:1200px;
+	margin:0 auto;
+	border:1px solid red;
+}
+.legend{
+	/*width:600px;*/
+	/*height:600px;*/
+	/*margin:0 auto;*/
+}
+.pingjiakuang{
+	width:600px;
+	height:400px;
+	margin:0 auto;
+}

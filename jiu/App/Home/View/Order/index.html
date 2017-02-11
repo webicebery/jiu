@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+	<load href="__PUBLIC__/js/jquery-2.1.3.min.js" />
+	<style>
+		body{
+			font-family: 微软雅黑
+		}
+	</style>
+</head>
+<body>
+	<h1 style="color:red">我的订单</h1><hr><br><br>
+	<empty name="list">
+		<h2>暂时没有订单</h2><br>
+	<else/>
+	
+
+	<table class="table table-hover" border="1" style="text-align:center">
+		<tr>
+			<th style="text-align:center;font-size:16px;">订单号</th>
+			<th style="text-align:center;font-size:16px;">收货人</th>
+			<th style="text-align:center;font-size:16px;">手机号码</th>
+			<th style="text-align:center;font-size:16px;">收货地址</th>
+			<th style="text-align:center;font-size:16px;">总价</th>
+			<th style="text-align:center;font-size:16px;">订单状态</th>
+			<th style="text-align:center;font-size:16px;">下单时间</th>
+			<th style="text-align:center;font-size:16px;">操作</th>
+		</tr>
+			<foreach name="list" item="val">
+		<tr>
+			<td>{$val.order_num}</td>
+			<td>{$val.order_linkman}</td>
+			<td>{$val.order_tel}</td>
+			<td>{$val.order_address}</td>
+			<td style="color:red; font-size:8px">￥{$val.order_total}</td>
+			<td style="color:red">{$val.order_status}</td>
+			<td>{$val.order_addtime}</td>
+			<if condition="$val[order_status] eq '未付款'">
+			<form action="{:U('Home/ShopCart/pay')}" method="post" target="_top">
+				<input type="hidden" name="to_pay" value="{$val.order_id}">
+				<td class="form-group"><button type="submit">付款</button></td>
+			</form>
+			<else/>
+				<td class="form-group"><a href="__MODULE__/Order/orderDetail.html?id={$val.order_id}&message={$val.order_status}" >查看</td>
+			</if>
+		</tr>
+		</foreach>
+	</table><br>
+	<div class="boss">{$show}</div>
+	</empty>
+</body>
+<script>
+	$('.boss').children().children().attr('class' , 'btn ');
+	var p = "<?php  echo $_GET['p'] ?>"
+
+	$('.boss span').attr('class' , 'btn btn-info');
+</script>
+</body>
+</html>

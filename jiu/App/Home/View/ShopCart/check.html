@@ -1,0 +1,129 @@
+<extend name="./Public/Home/head/base.html"/>
+<block name="title">
+ <link  rel="stylesheet"  type="text/css" href="__PUBLIC__/Home/css/cart.css"/>
+ <div id="header-title" style="width:200px; height:90px; font-size:25px;float:left;line-height:70px;font-weight:bold;">订单核对</div>
+            <div class="cart-status">
+                <div class="cart-status-bg">
+                    <p class="running" style="width:60%"></p>
+                </div>
+            </div>
+            <div style="clear:both">
+           <hr>
+</block>
+<block name="main">
+<script type="text/javascript" src="__PUBLIC__/lib/layer/2.1/layer.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/static/h-ui.admin/js/H-ui.admin.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/static/h-ui/js/H-ui.js"></script>
+
+    <div class="container">
+         <form class="form-horizontal" role="form" action="__MODULE__/ShopCart/pay" method="post" name="form">
+            
+            <div class="form-group">
+                <div class="col-sm-12 control-label" style="font-size:16px;font-weight:bold;background:#ccc;text-align:left;line-height: 22px;">收货地址</div>
+            </div>
+            <div class="form-group">
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td>收货人</td>
+                        <td>收货地址</td>
+                        <td>手机号码</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="address" id="value">
+                        <tr>
+                            <td><input type="radio" name='status' value='{$value[lid]}' {$value['l_status']==1 ? 'checked' : ''}  ></td>
+                            <td>{$value['l_name']}</td>
+                            <td>{$value['l_address']}</td>
+                            <td>{$value['l_tel']}</td>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group">
+               <button type="button" class="btn btn-info btn" onclick="add_address('新增地址','addAddress.html')">新增地址</button>
+            </div>
+
+     
+
+            <div class="form-group">
+                <div class="col-sm-12 control-label" style="font-size:16px;font-weight:bold;background:#ccc;text-align:left;">付款方式</div>
+            
+            </div>
+
+            <div class="form-group">
+                <label class="radio-inline">
+                    <input type="radio" name="payWay" id="inlineRadio1" value="0" checked/>在线支付
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="payWay" id="inlineRadio2" value="1"/> 货到付款
+                </label>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-12 control-label" style="font-size:16px;font-weight:bold;background:#ccc;text-align:left;">订单信息</div>
+            </div>
+            <div class="cart-info2">
+                <table class="cart-table2 table table-hover">
+                    <thead>
+                        <tr>
+                            <td>商品名称</td>
+                            <td>图片</td>
+                            <td>单价</td>
+                            <td>数量</td>
+                            <td>小计</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <php> $total = 0; </php>
+                   <foreach name="data" item="val">  
+                        <tr>
+                            <td>{$val.name}</td>
+                            <td><img src="__PUBLIC__/goodsimage/{$val['picture']}" style="width:50px;"></td>
+                            <td>{$val.price}</td>
+                            <td>
+                            <input type="text" style="width:25px; border:none;"  value="{$val.num}" readonly>
+                            </td>
+                            <td>￥{$val['num']*$val['price'] }元</td>
+                            </tr>
+                            <php>$total += $val['num']*$val['price'] ;</php>
+                       </foreach>     
+                    </tbody>
+                    
+                </table>
+            <div class="form-group">
+                <div  style="font-size:20px;font-weight:bold;color:#a10000;float:right;">总计：￥{$total}元</div>
+                <input type="hidden" name="totally" value="{$total}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div style="float:right;">
+                <button  onclick='return jisuan()' type="submit" class="btn btn-danger">立即付款</button>
+            </div>
+        </div>
+    </form>
+    </div>
+    <script>
+      function add_address(title,url,id,w,h){
+            layer_show(title,url,w,h);
+    }
+
+    var Choose_addr = document.getElementsByName('status');
+    var flag = false;
+    function jisuan(){
+                for(var i=0;i<Choose_addr.length;i++){
+                    if(Choose_addr[i].checked==true){
+                        flag = true;
+                    }
+                }
+                if(flag == false){
+                    alert('请选择送货地址');
+                    return false;
+                }
+            }
+    </script>
+</block>

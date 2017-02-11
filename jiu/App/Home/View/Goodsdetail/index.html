@@ -1,0 +1,370 @@
+<extend name="./Public/Home/head/base.html"/>
+<block name="main">
+<!-- 放大镜的js和css引入 -->
+
+<link href="__PUBLIC__/Home/css/common.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/Home/css/goodsdetail.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/Home/js/jquery-1.9.1.min.js"></script>
+<script src="__PUBLIC__/Home/js/common.js"></script>
+<load href="__PUBLIC__/Home/css/main.css" />
+<load href="__PUBLIC__/Home/css/left.css" />
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/show.css">
+
+    <style>
+      .prea_tu{
+        width:30px;
+        height:30px;
+        float:left;
+        /*border:1px solid red;*/
+         cursor:pointer;
+        background-image:url("__PUBLIC__/Home/images/d_e.jpg");
+      }
+      .wai-1{
+                  width:30px;
+                  height:25px;
+                  /*border:1px solid red;*/
+                  float: left;
+                   background-image:url("__PUBLIC__/Home/images/d_i.jpg");
+                }
+
+    </style>
+
+    <!-- 主体部分开始 -->
+
+    <!--   开始遍历   -->
+    <empty name="data">
+
+      <center><h1 style="height:500px"> 暂无详情 </h1></center>
+    <else />
+    <foreach name="data" item="val">
+    
+    <div id="left_o">
+    <!-- 主体的左边 -->
+       <a name="top"></a>    
+          <div id="o_left">
+
+            <div class="subNav">
+              <a href="#">首页</a> <span>&gt;</span>
+              
+              <span>&gt;</span> <a class="curName" style="color:red;">
+                  {$val.name}</a>
+            </div>
+            <div id="showbox">
+              <!--         商品图          -->
+              <img src="__PUBLIC__/goodsimage/{$val.picture}" width="300" height="300" />
+            </div>
+          <!--展示图片盒子-->
+            <div class="spec-scroll">
+              <div id="showsum"></div><!--展示图片里边-->
+                  <p class="showpage"  style="width:435px; z-index:10;">
+                  <a href="javascript:void(0);" id="showlast"> < </a>
+                  <a href="javascript:void(0);" id="shownext"> > </a>
+                  </p>
+            </div>
+          </div>
+    </div>
+    <!-- 主体的右边 -->
+    <div id="o_right" style="">
+    <form action="#" id="form" method="post">
+        <div class="right1">
+                <b>{$val.name}</b>
+        </div>
+        <div class="right2">
+                <dt class="li-right1">玖酒价 : </dt>
+                <dt class="li-right3">￥</dt>
+                <dt class="li-right2">{$val.price}</dt>
+                <div id="wai-right">
+                    <dt class="wai-1"></dt>
+                    <a href="#pinlun"><p class="wai-2">({$count})条评论</p></a>
+                </div>
+        </div>
+        <div class="right3">
+                  <p class="part_clear1" style="font-size:16px;font-family:微软雅黑">促&nbsp;&nbsp;销 : </p>
+                  <dt class="part_clear2"><p style="text-align:center;   font-size:20px; color: white;">加价购</p></dt>
+                  <p class="part_clear3" style="font-size:10px;font-family:微软雅黑">加价购活动商品满1元即可换购1件商品</p>
+        </div>
+        <div class="right4">
+                  <p class="part_line1">商品描述 : </p>
+                  <p class="part_line2">{$val.describe} </p>
+        </div>
+        <div class="right5">
+                <ul><p class="part_cun1" style="font-size:16px;font-family:微软雅黑">浏览量:</p> <p class="part_cun2">{$val.views}</p></ul>
+               <ul><p class="part_cun3" style="font-size:16px;font-family:微软雅黑">购买量:</p> <p class="part_cun4">{$val.buy}</p></ul>
+        </div>
+        <div class="right6">
+                  <ul><b class="part_L1" style="font-size:16px;font-family:微软雅黑">库&nbsp;&nbsp;&nbsp;存:</b> <b class="part_L2">{$val.store}</b></ul>
+                 
+                 <ul><b class="part_L3" style="font-size:16px;font-family:微软雅黑">状&nbsp;&nbsp;&nbsp;态:</b> <b class="part_L4">{$val.display}</b></ul>
+        </div>
+        <hr width=100%>
+        <div class="right7">
+          <div class="part_jie" style="position:relative;z-index:20;">
+                <input type="text" readonly style="width:40px; height:40px;text-align:center;float:left;z-index:-1;" id='goodsCount'  name="num" value="1">
+              
+                  <div id="jie_num1">
+                  <a href="javascript:;" style="margin-left:5px;" class="glyphicon glyphicon-plus control-label" onclick="num('add')"></a>
+                  </div>
+                  <div id="jie_num2">
+                  <a href="javascript:;"  style="margin-left:4px;" class="glyphicon glyphicon-minus control-label" onclick="num('minus')"></a>
+                 </div>
+                <if condition="($val[display] eq '在售') AND ($val[store] gt 0)">
+                <a onclick="addToCart({$val.id})"><dt class="prea_gou"><p class="prea_tu"></p >加入购物车</dt></a>
+                <else/>
+                  <dt class="prea_gou"><p class="prea_tu"></p >已售罄</dt>
+                </if>
+          </div>
+        </div>
+      </form>
+    </div>
+      <!-- 主体的结束 -->
+    </div><br><br><hr>
+        
+    <br>
+    <!-- 评论区 -->
+    <div style="clear:both;"></div>
+    <div class="buju" style="height:3250px;">
+    <!-- 左边商品推荐 -->
+      <div class="buju_left">
+            
+            <div class="buju_left1">
+                <div class="left_s">买过此商品的人还买过</div>
+
+                <foreach name="res" key="key" item="val"> <a href="Home/goodsdetail/index?id={$val[id]}">
+                <div class="left_s1">
+                      <dt class="left_zt1"><img src="__PUBLIC__/goodsimage/{$val.picture}" width="70" height="80" /></dt>
+                      <dt class="left_zm1">{$val['name']}</dt>
+                      <dt class="left_zj1">${$val['price']}</dt>
+                </div>
+                </a>
+                </foreach>
+            </div>
+            <!--                            上面                              -->
+            <div class="buju_left2">
+                <div class="left_x">看过此商品的人还看过</div>
+                <foreach name="ad" key="key" item="val"> 
+                <a href="Home/goodsdetail/index?id={$val[id]}">
+                <div class="left_x1">
+                      <dt class="left_xt1"><img src="__PUBLIC__/goodsimage/{$val.picture}" width="70" height="80" /></dt>
+                      <dt class="left_xm1">{$val['name']}</dt>
+                      <dt class="left_xj1">${$val['price']}</dt>
+                </div>
+                </a>
+                </foreach>
+            </div>
+      </div>
+    <div style="color:red;width:950px;height:40px;margin-left:249px;background-color:#EFEFEF">
+        <dt style="float:left;width:100px;height:40px;text-align:center;font-size:20px;background-color:#A40C59;color: white;padding:5px 0;cursor:pointer;"><a href="#xiangqin" style="color:white;">商品详情</a></dt>
+        <dt style="float:left;width:100px;height:40px;text-align:center;font-size:19px; background-color: #A40C59; padding:5px 0;">
+        <a href="#pinlun" style="color:white;">商品评论</a></dt>
+        <dt style="float:left;width:100px;height:40px;text-align:center;font-size:19px; background-color: #A40C59; padding:5px 0;">
+        <a href="#fuwu" style="color:white;">服务保障</a></dt>
+    </div>
+    <a name="xiangqin"></a>
+    <div style=" width:950px;height:1800px;margin-left:249px;">
+            <img src="__PUBLIC__/goodsimage/{$data[0][not_icon]}" style="width:900px;height:1790px;">
+    </div>
+
+    <!--    商品评论展示   -->
+
+    <a name="pinlun"></a>
+    <div class="goodscomment" style="height:600px;margin-top:20px;">
+
+      <div style="background:#EFEFEF">
+        <div class="commentbtn">商品评价</div>
+        
+      </div>
+      <div>
+        <p style="margin-left:30px;margin-top:20px;height:30px;line-height:30px;font-size:20px">全部评论({$count})</p>
+        <hr>
+        <!-- 遍历 -->
+        <empty name="list">
+        <center><h1 style="height:400px"> 暂无评价 </h1></center>
+        <else />
+        <foreach name="list" key="key" item="val1">
+        
+        <div class="commentall" style="margin:5px 0">
+          <div class="comment1" style="margin-left:30px;float:left" >
+            <div>
+              <div style="float:left;line-height:25px;">评分:</div>
+              <div style="float:left">
+                <img src="__PUBLIC__/homeIcon/{$val1.cm_grade}.jpg" style="width:100px;height:25px;">
+              </div>
+            </div>
+            <div style="clear:both"></div>
+            <div style="line-height:25px">{$val1.cm_content}</div>
+          </div>
+          <div class="comment2" style="float:right" >
+            <div style="height:30px;line-height:30px">{$val1.userName}</div>
+            <div>{$val1.cm_addtime}</div>
+          </div>
+        </div>
+        <div style="clear:both"></div><hr>
+
+        
+        </foreach>
+        </empty>
+        <!-- 遍历 -->
+        <div>{$show}</div>
+      </div>
+      <a name="fuwu"></a>
+    <div class="goodscomment" style=" #ccc;height:730px;margin-top:70px;background-color:#EFEFEF;position:absolute;top:560px;left:0">
+
+      <div style="background:#EFEFEF">
+        <div class="commentbtn">服务保障</div>
+        </div>
+        <div id="container">
+        <ul style="background-color:white;">
+            <li><a href="">品牌授权</a></li>
+            <li><a href="">保真"基金"</a></li>
+            <li><a href="">万千信赖</a></li>
+            <li><a href="">挂牌公司</a></li>
+            <li><a href="">金牌客服</a></li>
+            <li><a href="">专业配送</a></li>
+        </ul>
+        <ol style="background-color:white;">
+            <li><img src="__PUBLIC__/Home/images/enc_01.jpg" style="width:895px;height:558px;"></li>
+            <li>
+              <dt class="baozhen"><h5>网酒网隶属于乐视控股，于2013年正式运营，秉承乐视互联网基因，扎根酒行业，以互联网思维改变行业，立志成为行业的创新者与引领者。
+              <br><br>
+              网酒网是专注于进口酒全产业链的生态酒企，主营进口葡萄酒、烈酒、啤酒、生态IP定制酒等相关品类，形成囊括线上网酒商城全网络覆盖（官网、第三方平台店铺群、生态合作平台）、线下自建生态终端（乐视生活馆、乐花）及构建酒直供网络（LePar、商超、KA、餐饮等）的全场景生态网络。网酒网以极致美酒产品、丰富生态体验、多元商业价值为核心价值，立志以颠覆的生态思维改变行业，成为行业的创新者与引领者，为用户带去极致美酒生活体验。</h5></dt>
+            <dt><img src="__PUBLIC__/Home/images/enc_05.jpg" style="width:895px;height:358px;"></dt>
+            </li>
+            <li>
+                  <dt class="guapai1"><b style="font-size:20px">我们承诺</b><br>
+                    <h5>
+                    网酒网所售商品均为正品。我们保证消费者在网酒网买的任何商品，均为正品。如果消费者在网酒网购买的商品经鉴定为假冒商品，我们承诺假一赔十，并严格对相关责任人进行惩处，绝不姑息。
+                    </h5>
+                 </dt>
+                  <dt><b style="font-size:20px"  class="guapai2">专业的客服团队</b><br><img src="__PUBLIC__/Home/images/enc_02.jpg" style="width:895px;height:280px;"></dt>
+            </li>
+            <li>
+                  <dt class="wanqian1"><h5>网酒网秉承顾客至上的服务理念，期待您的关注与反馈；如您在网酒网购物过程中遇到任何问题，可通过如下方式联系客服，我们将以最优质的服务帮您解决问题。<h5></dt>
+                  <dt class="wanqian2"><b style="font-size:20px">在线客服</b><br>
+                    <h5>
+                          包括自有平台与第三方商家入驻的所有咨询问题。
+                    </h5>
+                  </dt>
+                  <dt class="wanqian3"><b style="font-size:20px">  电话客服</b><br>
+                    <h5>
+                        服务时间：每日09:00-20:00 客服热线：4000-519-519
+                    </h5>
+                  </dt>
+                  <dt class="wanqian4"><b style="font-size:20px">服务邮箱</b><br>
+                    <h5>
+                      服务邮箱：wj.service9@le.com
+                    </h5>
+                  </dt>
+                  <dt> <img src="__PUBLIC__/Home/images/enc_08.jpg" style="width:895px;height:250px;"></dt>
+            </li>
+            <li>
+            <dt class="kefu1"><b style="font-size:20px">专业的客服团队</b><br>
+                  <h5>网酒网客户服务中心，我们始终秉承“客户至上、始终如一”的核心价值理念，向客户提供优质、高效、全方位服务。我们工作在后台，服务在最前线专注聆听客户心声，用声音传递热诚，用专业锻造优质，用服务擦亮品牌。具备WSET二级水平的资深客服随时为您答疑，与您享受到更便捷、更专业更优质的服务。</h5>
+            </dt>
+            <dt class="kefu2"> <img src="__PUBLIC__/Home/images/enc_06.jpg" style="width:895px;height:458px;"></dt>
+            </li>
+            <li>
+            <dt class="zhuanye"><h5>网酒网物流业务全国覆盖，现全国拥有2大物流中心，分别为北京，宁波，仓库的专业及高科技化管理方式，配送队伍高效及严谨工作方法，仓配之间的无缝衔接， 100%保证订单能高速准确的送达您的手中。<h5></dt>
+            <dt> <img src="__PUBLIC__/Home/images/enc_07.jpg" style="width:895px;height:500px;"></li></dt> 
+        </ol>
+    </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+    </foreach>
+    
+    </empty>
+
+
+
+                <!--图片预览结束-->
+<script type="text/javascript">
+  $(document).ready(function(){
+      var showproduct = {
+          "boxid":"showbox",
+          "sumid":"showsum",
+          "boxw":435,//宽度,该版本中请把宽高填写成一样
+          "boxh":435,//高度,该版本中请把宽高填写成一样
+          "sumw":60,//列表每个宽度,该版本中请把宽高填写成一样
+          "sumh":60,//列表每个高度,该版本中请把宽高填写成一样
+          "sumi":1,//列表间隔
+          "sums":6,//列表显示个数
+          "sumsel":"sel",
+          "sumborder":1,//列表边框，没有边框填写0，边框在css中修改
+          "lastid":"showlast",
+          "nextid":"shownext"
+          };//参数定义
+     $.ljsGlasses.pcGlasses(showproduct);//方法调用，务必在加载完后执行
+  });
+
+        $('#showbox').mouseover(function(){
+          $('#o_right').css("z-index",-3);
+
+        });
+        $('#showbox').mouseout(function(){
+          $('#o_right').css("z-index",1);
+
+        });
+
+        //商品购买数量
+        var val = document.getElementById('goodsCount');
+        function num(action){
+          if(action=='add' && val.value<{$val.store}){
+            val.value++;
+          }else if(action=='minus' && val.value>1){
+            val.value--;
+          }
+        }
+
+    
+    //尾部选项卡  
+     var container = document.getElementById('container');
+    // 所有ol下的li
+    var oli = container.lastChild.previousSibling.children;
+    // 当前显示的图片
+    var currentPic = 0;
+    // 默认显示第一张
+    oli[currentPic].style.display = 'block';
+
+    // 所有ul下的li
+    var uli = container.firstChild.nextSibling.children;
+    // console.dir(uli);
+    for(var i = 0; i < uli.length; i++){
+        // 在循环的同时，记录一个索引
+        uli[i].sign = i;
+        // 为所有li绑定事件
+        uli[ i ].onmouseover = function(){
+            // 更改前设置为隐藏
+            oli[currentPic].style.display = 'none';
+            // 更改下标
+            currentPic = this.sign;
+            // 更改后设置为显示
+            oli[currentPic].style.display = 'block';
+        };
+    }
+
+     $(window).scroll(function(){
+
+        var st = document.body.scrollTop;
+        if(st > 500){
+            $('.top2').css('display' , 'block' );
+            $('.message').css('display' , 'block' );
+
+            $('.top2').css('top' ,st + 480    +  'px' );
+            $('.message').css('top' ,st + 580    +  'px' );
+
+            // console.log($('.top2').css('top'));
+        }else{
+            $('.top2').css('display' , 'none' );
+            $('.message').css('display' , 'none' );
+
+        }
+
+    });        
+
+</script>
+<div style="clear:both;"></div>
+</block>

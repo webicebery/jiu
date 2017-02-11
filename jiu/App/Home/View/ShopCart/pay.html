@@ -1,0 +1,124 @@
+<extend name="./Public/Home/head/base.html"/>
+<block name="title">
+
+ <link  rel="stylesheet"  type="text/css" href="__PUBLIC__/Home/css/cart.css"/>
+ <div id="header-title" style="width:200px; height:90px; font-size:25px;float:left;line-height:70px;font-weight:bold;">订单提交</div>
+            <div class="cart-status">
+                <div class="cart-status-bg">
+                    <p class="running" style="width:100%"></p>
+                </div>
+            </div>
+            <div style="clear:both">
+           <hr>
+</block>
+    <block name="main">
+         <div class="payway">
+                              <div  >
+                                  <div class="lepay_content">
+                                      <div class="submit_success">
+                                          <p style="font-size:20px;">恭喜你！订单已提交成功! 订单号:{$data['order_num']}</p>
+                                          <p  style="color:red; text-align:center; ">请在60分钟内完成支付否则订单将会取消！</p>
+                                      </div>
+                                  </div>
+                              </div>
+                <div id='pay_bank'>
+            <br>
+            <table width="800px">
+                <tr>
+                    <td align="center"><input type='radio' name='aes'></td>
+                    <td align="center"><img src='__PUBLIC__/Home/pic/ABC.png' class='left'></td>
+                    <td align="center"><input type='radio' name='aes'></td>
+                    <td align="center"><img src='__PUBLIC__/Home/pic/BOC.png' class='left'></td>
+                    <td align="center"><input type='radio' name='aes'></td>
+                    <td align="center"><img src='__PUBLIC__/Home/pic/CCB.png' class='left'></td>
+                    <td align="center"><input type='radio' name='aes'></td>
+                    <td align="center"><img src='__PUBLIC__/Home/pic/BOD.png' class='left'></td>
+                </tr>
+                <tr>
+                    <td align="center"><input type='radio' name='aes'></td>
+                    <td align="center"><img src='__PUBLIC__/Home/pic/CEB.png' class='left'></td>
+                    <td align="center"><input type='radio' name='aes'></td>
+                    <td align="center"><img src='__PUBLIC__/Home/pic/CIB.png' class='left'></td>
+                    <td align="center"><input type='radio' name='aes'></td>
+                    <td align="center"><img src='__PUBLIC__/Home/pic/CITIC.png' class='left'></td>
+                    <td align="center"><input type='radio' name='aes'></td>
+                    <td align="center"><img src='__PUBLIC__/Home/pic/CEB.png' class='left'></td>
+                </tr>
+                <tr>
+                    <td align="center"><input type='radio' name='aes'></td>
+                    <td align="center"><img src='__PUBLIC__/Home/pic/CMB.png' class='left'></td>
+                    <td align="center"><input type='radio' name='aes'></td>
+                    <td align="center"><img src='__PUBLIC__/Home/pic/COMM.png' class='left'></td>
+                    <td align="center"><input type='radio' name='aes'></td>
+                    <td align="center"><img checked src='__PUBLIC__/Home/pic/GDB.png' class='left'></td>
+                    <td align="center"><input type='radio' name='aes'></td>
+                    <td align="center"><img src='__PUBLIC__/Home/pic/CITIC.png' class='left'></td>
+                </tr>
+                <tr>
+                    <td align="center"><input type='radio' name='aes'></td>
+                    <td align="center"><img src='__PUBLIC__/Home/pic/ICBC.png'  class='left'></td>
+                    <td align="center"><input type='radio' name='aes'></td>
+                    <td align="center"><img src='__PUBLIC__/Home/pic/BJBANK.png' class='left'></td>
+                    <td align="center"><input type='radio' name='aes'></td>
+                    <td align="center"><img src='__PUBLIC__/Home/pic/HKBEA.png'  class='left'></td>
+                    <td align="center"><input type='radio' name='aes'></td>
+                    <td align="center"><img src='__PUBLIC__/Home/pic/BOHAIB.png' class='left'></td>
+
+                </tr>
+            </table>
+            <br>
+            <form action='__MODULE__/ShopCart/paySuccess' method='post'>
+                <input type='hidden' name='order_id' value='{$data[order_id]}'>
+            <div class='passboxdiv'><b style="font-size:14px">支付密码:</b>　<input type='password' name='pas' class="passbox" placeholder="请输入支付密码"/><span class='size' style="color:red;"></span></div>
+            <br>
+            <center>
+                <button class='btn btn-success' type="submit" onclick='return asob()'>确认付款</button>
+             
+
+            </center>
+            </form>
+        </div>
+        </center>
+    </div>
+    <script type="text/javascript">
+            var paybank = document.getElementById('pay_bank');
+            var choose =document.getElementsByName('aes');
+            var flag = false;
+        for (var i =0; i <choose.length; i++) {
+            choose[i].onclick = function(){
+                $('.passboxdiv').css('display','block');
+            }
+        };
+
+        function asob(){
+            for(var i=0;i<choose.length;i++){
+                if(choose[i].checked == true){
+                    flag=true;
+                }
+            }
+            if(flag==false){
+                
+                return false;
+            }
+            if($('.passbox').val()=='' || $('.size').html()!='密码正确'){
+               
+                return false;
+                
+            }
+        }
+        
+        $('.passbox').blur(function(){
+            $.post("__MODULE__/ShopCart/payWay",{val:$('.passbox').val()},function(data){
+              if(data){
+                if(data=='Y'){
+                    $('.size').html('密码正确');
+
+                }else{
+                    $('.size').html('密码错误');
+                }
+              }
+            }); 
+
+        });
+    </script>
+    </block>

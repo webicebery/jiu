@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+	<load href="__PUBLIC__/js/jquery-2.1.3.min.js" />
+	<style>
+		body{
+			font-family: 微软雅黑
+		}
+	</style>
+</head>
+<body>
+	<h1 style="color:red">我的收货地址</h1><hr><br><br>
+	<empty name="list">
+		<h2>暂时没有添加收货地址</h2><br>
+	<else/>
+	
+
+	<table class="table table-hover" border="1" style="text-align:center">
+		<tr>
+			<th style="text-align:center;font-size:20px">收货人</th>
+			<th style="text-align:center;font-size:20px">收货地址</th>
+			<th style="text-align:center;font-size:20px">手机号码</th>
+			<th style="text-align:center;font-size:20px">状态</th>
+			<th style="text-align:center;font-size:20px">添加时间</th>
+			<th style="text-align:center;font-size:20px">操作</th>
+		</tr>
+			<foreach name="list" item="val">
+		<tr>
+			<td>{$val.l_name}</td>
+			<td>{$val.l_address}</td>
+			<td>{$val.l_tel}</td>
+			<td>{$val.l_status}</td>
+			<td>{$val.l_addtime}</td>
+			<td><a href="javascript:;" onclick="del(this,{$val.lid})">删除</a></td>
+		</tr>
+		</foreach>
+	</table><br>
+	</empty>
+	<botton class="btn btn-info"><a href="{:U('Home/Location/add')}">添加收货地址</a></botton>
+</body>
+
+<script>
+	function del(obj,$id){
+		if(confirm('确定删除?')){
+			$.get("{:U('Home/Location/del')}" , {'id' : $id } , function(data){
+				if(data == '1'){
+					$(obj).parents("tr").remove();
+				}else{
+					alert('删除失败 ! ');
+				}
+			});
+		}
+	}
+
+</script>
+</html>

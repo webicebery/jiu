@@ -1,0 +1,420 @@
+<extend name="./Public/Home/head/base.html" />
+
+<block name="main">
+<load href="__PUBLIC__/Home/css/main.css" />
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/show.css">
+
+	<!-- 		轮播图					 -->
+	<!-- 导航+轮播图 -->
+ 	<div class="container">
+ 		<!-- 横导航栏开始 -->
+ 		<div class="topnavall">
+ 			<div class="topnavall1">
+ 				全部商品
+ 			</div>
+ 			<div>
+ 				<ul class="topnavall2">
+
+ 					<li><a href="">首页</a></li>
+ 					<li><a href="">名庄臻选</a></li>
+ 					<li><a href="">限时闪购</a></li>
+ 					<li><a href="">玖玖美酒</a></li>
+ 					<li><a href="">乐享生态</a></li>
+ 					<li><a href="">超级伙伴</a></li>
+ 					<li><a href="">RVF评分</a></li>
+ 				</ul>
+ 			</div>
+
+			<!-- 左侧导航 start -->
+			<div style="width:1000px;height:402px;overflow:hidden">
+
+			    <div class="cate-nav1" >
+
+			        <ul class="cate-nav-ul1">
+						<foreach name="cate_list" key="key1" item="val1">
+						<if condition="$val1[pid] eq 1">
+			            <li class="cate-nav-li1">
+			                <a class="cate-link1">{$val1.name}</a>
+
+			                <div class="cate-hidden-two1">
+			                	<div style="width:345px">
+								<foreach name="cate_list" key="key2" item="val2">
+								<if condition="$val1[id] eq $val2[pid]">
+				                    <p class="cate-p1">{$val2.name}</p>
+				                    <div class="cate-hidden-three1">
+
+			                            <foreach name="cate_list" key="key3" item="val3">
+										<if condition="$val2[id] eq $val3[pid]">
+			                                <a href="{:U('Home/Search/index',array(id=>$val3['id']))}" id="catethree">{$val3.name}</a>
+			                            </if>
+										</foreach>
+				                    </div>
+				                </if>
+								</foreach>
+								</div>
+								<div class="zhanshi"><img src="__PUBLIC__/goodsimage/123.png" alt=""></div>
+			                </div>
+			            </li>
+			        </if>
+					</foreach>
+			        </ul>
+			    </div>
+			</div>
+		    <!-- 左侧导航 end -->
+		
+		</div>
+		<!-- 横导航栏结束 -->
+
+		<!-- 轮播图 -->
+		<div class="out">
+			<ul style="margin-left:-550px;" class="img">
+				<foreach name="list" key="key" item="val">
+	            	<li><a href=""><img src="__PUBLIC__/carouselimage/{$val.cal_image}" alt=""></a></li>
+	            </foreach>
+	        </ul>
+	        <ul class="num">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ul>
+			<input class="left btn" type="button" value="<">
+			<input class="right btn" type="button" value=">">
+		</div>
+	</div>
+	<!-- 导航+轮播图结束 -->
+
+
+
+	<!-- 	今日热卖					 -->
+	<!--  		这里是1楼     -->
+	<a name="F1"></a>
+	<div class="todayHot" style="height: 100px; ">
+		<div class="todayHot-1"><img src="__PUBLIC__/Home/pic/2016-12-19_201321.png" alt=""></div>
+		<div class="todayHot-2"> 今日闪购</div>
+		<div class="todayHot-3">10点开抢 限时低价 限量特惠<span ><a href="#" style="color:#CF1111;text-decoration: none;"> 更多低价商品闪购 >></a> </span></div>
+	</div>
+	
+	<div class="big_Box" style="width:1206px;height:280px;border:1px solid white">
+		<foreach name="todayHot" item="val">
+		<ul onmouseout="small_boss(this,{$val.id})" onmouseover="Big_boss(this,{$val.id})" style="float:left;width:200px;height:280px;text-align:center;position:relative;border:1px solid gray"><a href="{:U('Home/Goodsdetail/index',array(id => $val['id']))}" >
+			<li class='sp-picture'><img src="__PUBLIC__/goodsimage/{$val.picture}" width='195' height='195' alt=""></li>
+			<li style="margin-top:10px">{$val.name}</li>
+			<li style="margin-top:10px;color:red;font-size:20px">￥ {$val.price}</li></a>
+			<li><button onclick="addToCart({$val.id})" class="shop_car" id="shop_car{$val.id}" style="width:197px;padding:10px;background-color:#a40c59;position:absolute;top:238px;left:0px;display:none;border:none;color:white;">加入购物车</button></li>
+		</ul>
+		</foreach>
+	</div>
+
+
+	
+
+
+
+
+	<!-- 				乐享盛宴					 -->
+	<!-- 			这里是二楼							 -->
+	<a name="F2"></a>
+	<div class="todayHot" style="height:50px">
+		<div class="todayHot-1"><img src="__PUBLIC__/Home/pic/2016-12-20_111353.png" alt=""></div>
+		<div class="todayHot-2" style="margin:30px auto;font-family:黑体;"> 乐享盛宴</div>
+
+	</div>
+
+	<div class='tabs'>
+		<ul class="menu">
+			<li class="on">今日特惠</li>
+		    <li>人气爆棚</li>
+		    <li>好礼佳品</li>
+		    <li>流连忘返</li>
+		    <li>闲情小酌</li>
+		</ul>
+		<div class="main">
+	        <div class="tab" style="display:block;">
+				<div class="big-img"><img src="__PUBLIC__/goodsimage/1481683027168305.png" alt=""></div>
+				<foreach name="lexiang" item="val">
+					<div onmouseout="small_boss(this,{$val.id})" onmouseover="Big_boss(this,{$val.id})" style="width:360px;height:210px;border-top:none;border:1px solid gray;float: left;position:relative"><a href="{:U('Home/Goodsdetail/index',array(id => $val['id']))}">
+						<div class='sp-picture' style="width:200px;height:209px;float:left"><img src="__PUBLIC__/goodsimage/{$val.picture}" width="198" height="206px" alt=""></div>
+						<div style="width:157px;float:left;margin-top:85px;text-align:center;font-size:2px;color:black;font-family:微软雅黑">{$val.name}</div>
+						<div style="width:157px;float:left;color:red;text-align:center;margin-top:10px;font-size:20px">￥ {$val.price}</div></a>
+						<button onclick="addToCart({$val.id})" class="shop_car" id="shop_car{$val.id}" style="width:157px;padding:10px;background-color:#a40c59;position:absolute;top:166px;left:200px;display:none;border:none;color:white;">加入购物车</button>
+					</div>
+				</foreach>
+	        </div>
+	        <div class="tab" >
+				<div class="big-img"><img src="__PUBLIC__/goodsimage/1482142259714561.png" alt=""></div>
+				<foreach name="renqi" item="val">
+					<div onmouseout="small_boss(this,{$val.id})" onmouseover="Big_boss(this,{$val.id})" style="width:360px;height:210px;border-top:none;border:1px solid gray;float: left;position:relative"><a href="{:U('Home/Goodsdetail/index',array(id => $val['id']))}">
+						<div style="width:200px;height:208px;float:left"><img src="__PUBLIC__/goodsimage/{$val.picture}" width="198" height="206px" alt=""></div>
+						<div style="width:157px;float:left;margin-top:85px;text-align:center;font-size:2px;color:black;font-family:微软雅黑">{$val.name}</div>
+						<div style="width:157px;float:left;color:red;text-align:center;margin-top:10px;font-size:20px">￥ {$val.price}</div>
+					</a>
+					<button onclick="addToCart({$val.id})" class="shop_car" id="shop_car{$val.id}" style="width:157px;padding:10px;background-color:#a40c59;position:absolute;top:166px;left:200px;display:none;border:none;border:none;color:white;">加入购物车</button>
+					</div>
+				</foreach>
+	        </div>
+	        <div class="tab" >
+				<div class="big-img"><img src="__PUBLIC__/goodsimage/1481683097072118.png" alt=""></div>
+				<foreach name="haoli" item="val">
+					<div onmouseout="small_boss(this,{$val.id})" onmouseover="Big_boss(this,{$val.id})" style="width:360px;height:210px;border-top:none;border:1px solid gray;float: left;position:relative"><a href="{:U('Home/Goodsdetail/index',array(id => $val['id']))}">
+						<div style="width:200px;height:208px;float:left"><img src="__PUBLIC__/goodsimage/{$val.picture}" width="198" height="206px" alt=""></div>
+						<div style="width:157px;float:left;margin-top:85px;text-align:center;font-size:2px;color:black;font-family:微软雅黑">{$val.name}</div>
+						<div style="width:157px;float:left;color:red;text-align:center;margin-top:10px;font-size:20px">￥ {$val.price}</div>
+					</a>
+					<button onclick="addToCart({$val.id})" class="shop_car" id="shop_car{$val.id}" style="width:157px;padding:10px;background-color:#a40c59;position:absolute;top:166px;left:200px;display:none;border:none;color:white;">加入购物车</button>
+					</div>
+				</foreach>
+	        </div>
+	        <div class="tab" >
+				<div class="big-img"><img src="__PUBLIC__/goodsimage/1479260955739647.png" alt=""></div>
+				<foreach name="liulian" item="val">
+					<div onmouseout="small_boss(this,{$val.id})" onmouseover="Big_boss(this,{$val.id})" style="width:360px;height:210px;border-top:none;border:1px solid gray;float: left;position:relative"><a href="{:U('Home/Goodsdetail/index',array(id => $val['id']))}">
+						<div style="width:200px;height:208px;float:left"><img src="__PUBLIC__/goodsimage/{$val.picture}" width="198" height="206px" alt=""></div>
+						<div style="width:157px;float:left;margin-top:85px;text-align:center;font-size:2px;color:black;font-family:微软雅黑;overflow:hidden">{$val.name}</div>
+						<div style="width:157px;float:left;color:red;text-align:center;margin-top:10px;font-size:20px">￥ {$val.price}</div>
+					</a>
+					<button onclick="addToCart({$val.id})" class="shop_car" id="shop_car{$val.id}" style="width:157px;padding:10px;background-color:#a40c59;position:absolute;top:166px;left:200px;display:none;border:none;color:white">加入购物车</button>
+					</div>
+				</foreach>
+	        </div>
+	        <div class="tab" >
+				<div class="big-img"><img src="__PUBLIC__/goodsimage/1481770360752948.png" alt=""></div>
+				<foreach name="xianqing" item="val">
+					<div onmouseout="small_boss(this,{$val.id})" onmouseover="Big_boss(this,{$val.id})" style="width:360px;height:210px;border-top:none;border:1px solid gray;float: left;position:relative"><a href="{:U('Home/Goodsdetail/index',array(id => $val['id']))}">
+						<div style="width:200px;height:208px;float:left"><img src="__PUBLIC__/goodsimage/{$val.picture}" width="198" height="206px" alt=""></div>
+						<div style="width:157px;float:left;margin-top:85px;text-align:center;font-size:2px;color:black;font-family:微软雅黑">{$val.name}</div>
+						<div style="width:157px;float:left;color:red;text-align:center;margin-top:10px;font-size:20px">￥ {$val.price}</div>
+					</a>
+					<button onclick="addToCart({$val.id})" class="shop_car" id="shop_car{$val.id}" style="width:157px;padding:10px;background-color:#a40c59;position:absolute;top:166px;left:200px;display:none;border:none;color:white;">加入购物车</button>
+					</div>
+				</foreach>
+	        </div>
+	    </div>
+	</div><br>
+
+
+	<!-- 				热销推荐						 -->
+
+	<div class="todayHot">
+		<div class="todayHot-1"><img src="__PUBLIC__/Home/pic/2016-12-20_165722.png" alt=""></div>
+		<div class="todayHot-2" style="margin-top:25px;font-family:黑体"> 热销推荐</div>
+
+	</div>
+	<div style="clear:both"></div><br>
+
+	<div style="float:left;border:1px solid gray">
+		<img src="__PUBLIC__/goodsimage/1481684142012371.png" alt="">
+	</div>
+	<div style="float:left;border:1px solid gray">
+		<img src="__PUBLIC__/goodsimage/1480390238790862.png" alt="">
+	</div>
+
+	<div style="float:left;border:1px solid gray">
+		<img src="__PUBLIC__/goodsimage/1481684605926234.png" alt="">
+	</div>
+
+	<div style="float:left;border:1px solid gray">
+		<img src="__PUBLIC__/goodsimage/1478512099064785.png" alt="">
+	</div>
+	<div style="clear:both"></div><br>
+	<br>
+
+	<!-- 			商品分类----葡萄酒								 -->
+	<!-- 这里是3楼 -->
+	<a name="F3"></a>
+
+	<div style="font-size:20px;font-family:黑体">红葡萄酒</div><hr>
+
+	<div class="public-box">
+
+		<div class="left-box"><img src="__PUBLIC__/goodsimage/1481694604908169.png" alt=""></div>
+		<div class="center-box">
+			<foreach name="putao" item="val">
+			<div onmouseout="small_boss(this,{$val.id})" onmouseover="Big_boss(this,{$val.id})" style="width:189px;height:230px;border:1px solid gray;float: left;overflow: hidden;position:relative">
+				<div><a href="{:U('Home/Goodsdetail/index',array(id => $val['id']))}">
+					<img src="__PUBLIC__/goodsimage/{$val.picture}" width="188" height="179px" alt="">
+				</div>
+				<div style="text-align:center;font-size:5px;margin-top:6px;font-family:微软雅黑">{$val.name}</div></a>
+				<div style="text-align:center;font-size:20px;margin-top:2px;color:red">￥ {$val.price}</div>
+				<button onclick="addToCart({$val.id})" class="shop_car" id="shop_car{$val.id}" style="width:187px;background-color:#a40c59;padding:10px;position:absolute;top:189px;left:0px;display:none;border:none;color:white">加入购物车</button>
+			</div>
+
+			</foreach>
+		</div>
+		<div class="left-box"><img src="__PUBLIC__/goodsimage/1481695235727838.png" alt=""></div>
+
+		<div class="zhezhao"><a href="#"><img src="__PUBLIC__/goodsimage/1481695334589614.jpg" alt=""></a></div>
+	</div><br><br>
+
+
+	<!-- 			白酒						 -->
+	<!-- 			这里是4楼			 -->
+	<a name="F4"></a>
+
+	<div style="font-size:20px;font-family:黑体">白酒</div><hr>
+
+	<div class="public-box">
+
+		<div class="left-box"><img src="__PUBLIC__/goodsimage/1481695224255200.png" alt=""></div>
+		<div class="center-box">
+			<foreach name="baijiu" item="val">
+			<div onmouseout="small_boss(this,{$val.id})" onmouseover="Big_boss(this,{$val.id})" style="width:189px;height:230px;border:1px solid gray;float: left;overflow: hidden;position:relative">
+				<div><a href="{:U('Home/Goodsdetail/index',array(id => $val['id']))}">
+					<img src="__PUBLIC__/goodsimage/{$val.picture}" width="188" height="179px" alt="">
+				</div>
+				<div style="text-align:center;font-size:5px;margin-top:6px;font-family:微软雅黑">{$val.name}</div></a>
+				<div style="text-align:center;font-size:20px;margin-top:2px;color:red">￥ {$val.price}</div>
+				<button onclick="addToCart({$val.id})" class="shop_car" id="shop_car{$val.id}" style="width:187px;background-color:#a40c59;padding:10px;position:absolute;top:189px;left:0px;display:none;border:none;color:white">加入购物车</button>
+			</div>
+
+			</foreach>
+		</div>
+		<div class="left-box"><img src="__PUBLIC__/goodsimage/1482117014222541.png" alt=""></div>
+
+		<div class="zhezhao"><a href="#"><img src="__PUBLIC__/goodsimage/1481695393652826.jpg" alt=""></a></div>
+	</div><br>
+
+
+	<!-- 			商品分类----白葡萄酒								 -->
+	<!-- 			这里是5楼		 -->
+	<a name="F5"></a>
+	<div style="font-size:20px;font-family:黑体">白葡萄酒</div><hr>
+
+	<div class="public-box">
+
+		<div class="left-box"><img src="__PUBLIC__/goodsimage/1481695235727838.png" alt=""></div>
+		<div class="center-box" >
+			<foreach name="baiputao" item="val">
+			<div onmouseout="small_boss(this,{$val.id})" onmouseover="Big_boss(this,{$val.id})" style="width:189px;height:230px;border:1px solid gray;float: left;overflow: hidden;position:relative;">
+				<div><a href="{:U('Home/Goodsdetail/index',array(id => $val['id']))}">
+					<img src="__PUBLIC__/goodsimage/{$val.picture}" width="188" height="179px" alt="">
+				</div>
+				<div style="text-align:center;font-size:5px;margin-top:6px;font-family:微软雅黑">{$val.name}</div></a>
+				<div style="text-align:center;font-size:20px;margin-top:2px;color:red">￥ {$val.price}</div>
+				<button onclick="addToCart({$val.id})" class="shop_car" id="shop_car{$val.id}" style="width:185px;background-color:#a40c59;padding:10px;position:absolute;top:189px;left:0px;display:none;border:none;color:white">加入购物车</button>
+			</div>
+
+			</foreach>
+		</div>
+		<div class="left-box"><img src="__PUBLIC__/goodsimage/1481694604908169.png" alt=""></div>
+
+		<div class="zhezhao"><a href="#"><img src="__PUBLIC__/goodsimage/1481695794856413.jpg" alt=""></a></div>
+	</div><br><br><br><hr>
+<!--            这里是楼层展示                     -->
+	<div style="display:none;position:absolute;top:300px;left:-60px" class="top3">
+
+		<div style="border:2px solid gray;padding:12px"><a href="#F1" style="text-decoration:none" title="1楼">F1</a></div>
+		<div style="border:2px solid gray;padding:12px"><a href="#F2" style="text-decoration:none" title="2楼">F2</a></div>
+		<div style="border:2px solid gray;padding:12px"><a href="#F3" style="text-decoration:none" title="3楼">F3</a></div>
+		<div style="border:2px solid gray;padding:12px"><a href="#F4" style="text-decoration:none" title="4楼">F4</a></div>
+		<div style="border:2px solid gray;padding:12px"><a href="#F5" style="text-decoration:none" title="5楼">F5</a></div>
+	</div>
+
+<script src="__PUBLIC__/js/jquery.scrollpic.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/TabSwitch.js" type="text/javascript"></script>
+<script>
+
+  function views($id){
+    alert(123);
+    $.get("{:U('Home/Goodsdetail/views')}" , {'id' : $id} , function(data){
+        alert(data);
+
+    });
+  }
+	$(document).ready(function(){
+    $('.tabs').myTab({
+        operate:'mouseover',
+        time:2000,
+        auto:true,
+        delayTime: 0
+    })
+});
+//
+$(function(){
+  $('.bannerFocus01').hhScrollpic({
+ 			scrollPicMth:2,  //每页显示个数
+			defaultSpeed : 1000,   //默认滚动时间  点击按钮滚动时间
+			speed : 2000   //自动播放滚动时间
+
+ 	});
+
+  	$('.bannerFocus02').hhScrollpic({
+ 			scrollPicMth:6,  //每页显示个数
+			defaultSpeed : 1000,   //默认滚动时间  点击按钮滚动时间
+			speed : 2000   //自动播放滚动时间
+ 	});
+
+});
+
+
+	$(window).scroll(function(){
+
+		var st = document.body.scrollTop;
+		if(st > 500){
+			$('.top2').css('display' , 'block' );
+			$('.top3').css('display' , 'block' );
+			$('.top2').css('top' ,st + 520    +  'px' );
+			$('.top3').css('top' ,st + 200    +  'px' );
+			console.log($('.top2').css('top'));
+		}else{
+			$('.top2').css('display' , 'none' );
+			$('.top3').css('display' , 'none' );
+		}
+
+	});
+
+	 	//手动控制轮播图
+	$(".img li").eq(0).fadeIn(300);//加载页面的时候让第一个图片显示
+	$(".num li").eq(0).addClass("active");//给序号为1的加上红色背景
+	$(".num li").mouseover(function () {
+		//当前的数字显示红色背景,其他的数字都隐藏背景
+		$(this).addClass("active").siblings().removeClass("active");
+		//当前数字对应的图片显示,其他图片都隐藏
+		var index = $(this).index();
+		$(".img li").eq(index).stop().fadeIn(300).siblings().stop().fadeOut(300);
+	})
+	//实现自动轮播
+	var i = 0;//计时器控制数字
+	var t = setInterval(move,3000);
+	//该方法显示与序号对应的图片
+	function move() {
+		if (++i ==5){
+			i = 0;
+		}
+		$(".num li").eq(i).addClass("active").siblings().removeClass("active");
+		$(".img li").eq(i).stop().fadeIn(300).siblings().stop().fadeOut(300);
+	}
+	//鼠标移入后停止自动轮播
+	$(".out").hover(function () {
+		clearInterval(t);
+	}, function () {
+		t = setInterval(move,3000);
+	});
+	//按钮移动事件
+	$(".right").click(function () {
+		move();
+	});
+	$(".left").click(function () {
+		i = i-2;
+		move();
+	});
+
+
+	function Big_boss(obj,$id){
+		console.log($id + 'shop_car' + 'over');
+		clearInterval()
+		$('#shop_car' + $id).css('display' , 'block')
+
+	}
+	function small_boss(obj,$id){
+		console.log($id + 'shop_car' + 'out');
+
+		$('#shop_car' + $id).css('display' , 'none');
+
+	}
+
+	
+</script>
+
+</block>

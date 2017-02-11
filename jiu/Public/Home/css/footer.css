@@ -1,0 +1,257 @@
+
+                body,div,ul,li,a,p{
+                padding:0;
+                margin:0;
+                }
+                li{
+                    list-style:none;
+                }
+                a{
+                    text-decoration:none;
+                    color:black;
+                }
+                #ww{
+				
+                    width:100%;
+                    height:470px;
+                    /*border:1px solid #ccc;*/
+                }
+                #wb{
+                    width:1200px;
+                    height:120px;
+                    /*border:1px solid red;*/
+                    padding:0 50px;
+                }
+
+                #wb1{
+                    width:220px;
+                    height:60px;
+                    /*border:1px solid red;*/
+                    float:left;
+                    font-size:20px;
+                    margin-top:45px;
+
+                }
+                #wb1 dt{
+                    width:50px;
+                    height:50px;
+                    float:left;
+                    background: url(../pic/ico-2015-12s.png) 0 0 no-repeat;
+                }
+
+                 #wb2{
+                    width:250px;
+                    height:60px;
+                    /*border:1px solid red;*/
+                    float:left;
+                    font-size:20px;
+                    margin-top:45px;
+                    margin-left:40px;
+                }
+                #wb2 dt{
+                    width:50px;
+                    height:50px;
+                    float:left;
+                    background: url(../pic/ico-2015-12s.png) 0 -55px no-repeat;
+                }
+
+                #wb3{
+                    width:250px;
+                    height:60px;
+                    /*border:1px solid red;*/
+                    float:left;
+                    font-size:20px;
+                    margin-top:45px;
+                    margin-left:40px;
+                }
+                #wb3 dt{
+                    width:50px;
+                    height:50px;
+                    float:left;
+                    background: url(../pic/ico-2015-12s.png) 0 -110px no-repeat;
+                }
+
+                #wb4{
+                    width:250px;
+                    height:60px;
+                    /*border:1px solid red;*/
+                    float:left;
+                    font-size:20px;
+                    margin-top:45px;
+                    margin-left:40px;
+                }
+                #wb4 dt{
+                    width:50px;
+                    height:50px;
+                    float:left;
+                    background: url(../pic/ico-2015-12s.png) 0 -165px no-repeat;
+                }
+                #ww b{
+                    font-size:20px;
+                    line-height:60px;
+                }
+                /*上面结束*/
+                /*中间部分的开始*/
+                #zwb{
+                    width:1200px;
+                    height:200px;
+                    /*border:1px solid red;*/
+                }
+
+                #zwb1{
+                    width:90px;
+                    height:200px;
+                    /*border:1px solid red;*/
+                    float:left;
+                }
+                #zwb1 li{
+                    float:left;
+                    padding-top:8px;
+                }
+
+                #zwb2{
+                    width:90px;
+                    height:200px;
+                    /*border:1px solid red;*/
+                    float:left;
+                    margin-left:40px;
+                }
+                #zwb2 li{
+                    float:left;
+                    padding-top:8px;
+                }
+
+                #zwb3{
+                    width:160px;
+                    height:200px;
+                    /*border:1px solid red;*/
+                    float:left;
+                    margin-left:40px;
+                }
+                #zwb3 li{
+                    float:left;
+                    padding-top:8px;
+                }
+                #zwb3 b{
+                    float:left;
+                }
+
+                #zwb4{
+                    width:110px;
+                    height:200px;
+                    /*border:1px solid red;*/
+                    float:left;
+                    margin-left:40px;
+                }
+                #zwb4 li{
+                    float:left;
+                    padding-top:8px;
+                }
+                  #zwb4 b{
+                    float:left;
+                }
+
+                #zwb5{
+                    width:90px;
+                    height:200px;
+                    /*border:1px solid red;*/
+                    float:left;
+                    margin-left:40px;
+                }
+                #zwb5 li{
+                    float:left;
+                    padding-top:8px;
+                }
+
+                #zwb6{
+                    width:90px;
+                    height:200px;
+                    /*border:1px solid red;*/
+                    float:left;
+                    margin-left:40px;
+                }
+                #zwb6 li{
+                    float:left;
+                    padding-top:8px;
+                }
+                /*上面的结束*/
+
+                /*下面的开始 微博*/
+                #weibo{
+                        width:120px;
+                        height:150px;
+                        /*border:1px solid red;*/
+                        float:right;
+                        margin-top:20px;
+                }
+                #weibo img{
+                        width:120px;
+                        height:120px;
+                        /*background: url('./weibo.png'); */
+                }
+                #weibo li{
+                    margin-top:5px;
+                }
+                /*微信开始*/
+                #weixin{
+                        width:120px;
+                        height:150px;
+                        /*border:1px solid red;*/
+                        float:right;
+                        margin-right:15px;
+                        margin-top:20px;
+                }
+                #weixin img{
+                        width:120px;
+                        height:120px;
+                        /*background: url('./weibo.png'); */
+                }
+                #weixin li{
+                    margin-top:5px;
+                }
+                /*微信和微博部分结束*/
+                /*最后一部分的开始*/
+                #jieshu{
+                    width:100%;
+                    height:120px;
+                    /*border:1px solid red;*/
+                    background-color:black;
+                    margin-top:10px;
+					
+                }
+                #jieshu1{
+                    width:900px;
+                    height:110px;
+                    /*border:1px solid red;*/
+                    /*margin-top:10px;*/
+                    /*float: left;*/
+                    margin-left:-315px;
+                }
+                #jieshu1 dt a{
+                    color: white;
+                    font-size:15px;
+                    float: left;
+                    margin-top:20px;
+                    margin-left: 10px;
+                }
+                #jieshu dt li{
+                    color:white;
+                    font-size:15px;
+                    float: left;
+                    margin-top:10px;
+                    margin-left: 10px;
+                }
+                #jieshu2{
+                    width:300px;
+                    /*height:100px;*/
+                    /*border:1px solid red;*/
+                  /*  float:right;*/
+                  margin-left:900px;
+                  margin-top:-90px;
+                  background:url(../pic/ico-2015-12.png) 0 -644px no-repeat;
+                    line-height: 25px;
+                }
+                #jieshu2 dd{
+                    color:white;
+                    font-size:15px;
+                }

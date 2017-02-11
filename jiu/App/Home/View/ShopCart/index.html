@@ -1,0 +1,200 @@
+<extend name="./Public/Home/head/base.html"/>
+    <block name="title">
+    <load href="__PUBLIC__/Home/css/cart.css"/>
+      
+            <div id="header-title" style="width:200px; height:90px; font-size:25px;float:left;line-height:70px;font-weight:bold;">购物车</div>
+            <div class="cart-status">
+                <div class="cart-status-bg">
+                    <p class="running" style="width:30%"></p>
+                </div>
+            </div>
+            <div style="clear:both">
+           <hr>
+    </block>
+    <scrtip type="text/javascript"> var money=0; </scrtip>
+    <block name="main">
+
+        <div class="container" >
+     <if condition="count($_SESSION['cart']) GT 0">
+        <!-- 购物车商品信息 -->
+        <div id="cart-table">
+        <form action="__MODULE__/ShopCart/check" method="post" name="form">
+            <table class="cart-table table table-hover" id="tables">
+                <thead class="cart-table-head">
+                    <tr class="info">
+                        <td>选择</td>
+                        <td>商品名称</td>
+                        <td>图片</td>
+                        <td>单价</td>
+                        <td>数量</td>
+                        <td>小计</td>
+                        <td>操作</td>
+                    </tr>
+                </thead>
+                <tbody>
+                 
+                    <foreach name="cart" item="val">
+                    <tr>
+                        <td><input type="checkbox" name="goods[]s" id="{$val.id}" value="{$val.id}" onclick='ensure()'  checked></td>
+                        <td>{$val['name']}</td>
+                        <td ><a href="javascript:;"><img src="__PUBLIC__/goodsimage/{$val['picture']}" width="60px" height="60px"><a></td>
+                        <td class="price">{$val['price']}</td>
+                        <td>
+  
+                           <a href="javascript:;" class="glyphicon glyphicon-minus control-label" onclick='dec({$val.id},{$val.price})' style="text-decoration: none;"></a>
+
+                           <input type="text" readonly style="width:30px;" id='goods{$val.id}'  value="{$val['num']}">
+
+                           <a href="javascript:;" class="glyphicon glyphicon-plus control-label" onclick='inc({$val.id},{$val.price})' style="text-decoration: none;"></a>
+
+                            
+                        </td>
+                        <td id='total{$val.id}'>{$val['num']*$val['price'] }元</td>
+                        <td><a type="button" class="btn btn-danger btn-sm" href="__MODULE__/ShopCart/delGoods.html?id={$val.id}">删除</a></td>
+                        <p id='{$key}'>{$money+=$val['num']*$val['price'] }</p>
+                    </tr>
+                   <script>
+                        money = {$money};
+                        document.getElementById('{$key}').innerHTML='';
+                   </script>
+                    </foreach>
+                    
+                    </tbody>
+                </table> 
+                
+                <div class="total-price">总价：<b id="money">{$money}</b>元</div>
+                
+                <div class="cart-pay">
+                    <a href="__MODULE__/ShopCart/clearCart.html" class="clear-button btn btn-danger">清空购物车</a>
+                    <button   onclick='return jisuan()'  type="submit"  class="pay-button btn btn-danger">提交订单</button>
+
+                    <a href="__MODULE__/index/show" class="pay-button btn btn-success" style="margin-right:20px">继续购物</a>
+                </div>
+
+                <else/>
+                        <div class="lecar_wap">
+                              <div class="lepay_wrap" id="lepay_wrap" style="margin:0 auto;">
+                                  <div class="lepay_content">
+                                      <div class="none_shop">
+                                          <p style="font-size:20px;">您的购物车空空的哦，去逛逛吧！</p>
+                                          <a href="__MODULE__/index/show" style="color:red; text-align:center; ">去购物>></a>
+                                      </div>
+                                  </div>
+                              </div>
+                              </form>
+                      </div>       
+                </if>
+
+             <div style="border-top:2px solid #f7f7f7;width:100%;background:#fff;float:left;"></div>
+            </div>
+        </div>
+    <script>
+
+    //商品-1
+       function dec(id,price){
+                
+                    $.post("__MODULE__/ShopCart/decGoods",{id:id},function(data){
+                        if(data){
+                            $('#goods'+id).val(parseInt(data));
+                            $('#total'+id).html(mul($('#goods'+id).val(), price)+'元');
+                            ensure();
+                        }
+                    });
+                }
+            
+        //商品+1
+        function inc(id,price){
+                
+                    $.post("__MODULE__/ShopCart/incGoods",{id:id},function(data){
+                        if(data){
+                            $('#goods'+id).val(parseInt(data));
+                            $('#total'+id).html(mul($('#goods'+id).val(), price)+'元');
+                            ensure();
+                        }
+                    });
+                }    
+
+       function ensure(){
+            var arr = $('#tables :checkbox'); 
+            $('#money').html('0.00');
+            for(var i=0;i<arr.length;i++){  
+                if(arr[i].checked){
+                    $('#money').html(jia(parseFloat($('#money').html()),parseFloat($('#total'+arr[i].id).html())));
+                }
+            }       
+        }
+
+        // js解决浮点数运算问题
+            function jia(a, b) {
+                var c, d, e;
+                try {
+                    c = a.toString().split(".")[1].length;
+                } catch (f) {
+                    c = 0;
+                }
+                try {
+                    d = b.toString().split(".")[1].length;
+                } catch (f) {
+                    d = 0;
+                }
+                return e = Math.pow(10, Math.max(c, d)), (mul(a, e) + mul(b, e)) / e;
+            }
+
+            function jian(a, b) {
+                var c, d, e;
+                try {
+                    c = a.toString().split(".")[1].length;
+                } catch (f) {
+                    c = 0;
+                }
+                try {
+                    d = b.toString().split(".")[1].length;
+                } catch (f) {
+                    d = 0;
+                }
+                return e = Math.pow(10, Math.max(c, d)), (mul(a, e) - mul(b, e)) / e;
+            }
+
+            function mul(a, b) {
+                var c = 0,
+                    d = a.toString(),
+                    e = b.toString();
+                try {
+                    c += d.split(".")[1].length;
+                } catch (f) {}
+                try {
+                    c += e.split(".")[1].length;
+                } catch (f) {}
+                return Number(d.replace(".", "")) * Number(e.replace(".", "")) / Math.pow(10, c);
+            }
+
+            function div(a, b) {
+                var c, d, e = 0,
+                    f = 0;
+                try {
+                    e = a.toString().split(".")[1].length;
+                } catch (g) {}
+                try {
+                    f = b.toString().split(".")[1].length;
+                } catch (g) {}
+                return c = Number(a.toString().replace(".", "")), d = Number(b.toString().replace(".", "")), mul(c / d, Math.pow(10, f - e));
+            }        
+
+
+
+            var box = document.getElementsByTagName('input');
+            var flag = false;
+            /*判段用户是否选定了按钮*/
+            function jisuan(){
+                for(var i=0;i<box.length;i++){
+                    if(box[i].checked==true){
+                        flag = true;
+                    }
+                }
+                if(flag == false){
+                    alert('您没有选择商品！');
+                    return false;
+                }
+            }
+    </script>
+    </block>

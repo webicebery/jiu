@@ -1,0 +1,144 @@
+<!--_meta 作为公共模版分离出去-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<LINK rel="Bookmark" href="/favicon.ico" >
+<LINK rel="Shortcut Icon" href="/favicon.ico" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<script type="text/javascript" src="lib/PIE_IE678.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/Hui-iconfont/1.0.7/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/icheck/icheck.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui.admin/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<!--/meta 作为公共模版分离出去-->
+
+<title>添加用户 - H-ui.admin v2.3</title>
+<meta name="keywords" content="H-ui.admin v2.3,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
+<meta name="description" content="H-ui.admin v2.3，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+</head>
+<style>
+ 
+  h2{
+    font-family: 微软雅黑;
+    color:blue;
+  }
+  .pd-20{
+    /*margin-top:50px;*/
+    margin-left:50px;
+    /*border:1px solid red;*/
+    /*width:300px;*/
+    /*text-align: center;*/
+  }
+</style>
+<body>
+<article class="">
+  <foreach name="list" key="key" item="val">
+  
+  <form action="{:U('Admin/Inmail/reply')}" method="post" class="form form-horizontal" id="form-member-add">
+    <div class="pd-20" style="">
+     
+      <h2>发件人: {$val['Inm_fjname']}</h2>
+      <h2>标题: {$val['Inm_title']}</h2><br>
+      <span style="font-family: 微软雅黑;color:blue;font-size:30px">内容: </span><br><textarea disabled name="" id="" cols="40" rows="5" style="font-size:16px">{$val['Inm_content']}</textarea>
+      <h2>发送时间: {$val['Inm_sendtime']}</h2>
+      </foreach>
+    </div>
+    <input type="hidden" value="{$val.Inm_id}" name="id">
+    <input type="hidden" value="{$val.Inm_fjid}" name="Inm_fjid">
+    <input type="hidden" value="{$val.Inm_fjname}" name="Inm_fjname">
+    <input type="hidden" value="{$val.Inm_sjid}" name="Inm_sjid">
+    <input type="hidden" value="{$val.Inm_sjname}" name="Inm_sjname">
+    <div class="pd-20">
+      
+        <input class="btn btn-primary radius" type="submit" style="padding:5px 90px" value="&nbsp;&nbsp;回复&nbsp;&nbsp;">
+    </div>
+  </form>
+  </foreach>
+</article>
+<!--_footer 作为公共模版分离出去--> 
+<script type="text/javascript" src="__PUBLIC__/lib/jquery/1.9.1/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="__PUBLIC__/lib/jquery-form/jquery-form.js"></script>  -->
+<script type="text/javascript" src="__PUBLIC__/lib/layer/2.1/layer.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/1.14.0/jquery.validate.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/1.14.0/validate-methods.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/1.14.0/messages_zh.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/static/h-ui.admin/js/H-ui.admin.js"></script> 
+<!--/_footer /作为公共模版分离出去--> 
+
+<!--请在下方写此页面业务相关的脚本--> 
+<script type="text/javascript">
+$(function(){
+  $('.skin-minimal input').iCheck({
+    checkboxClass: 'icheckbox-blue',
+    radioClass: 'iradio-blue',
+    increaseArea: '20%'
+  });
+  
+  $("#form-member-add").validate({
+    rules:{
+      user_name:{
+        required:true,
+        minlength:2,
+        maxlength:16
+      },
+      sex:{
+        required:true,
+      },
+      user_tel:{
+        required:true,
+        isMobile:true,
+      },
+      user_email:{
+        required:true,
+        email:true,
+      },
+      uploadfile:{
+        required:true,
+      },
+      
+    },
+    onkeyup:false,
+    focusCleanup:true,
+    
+    submitHandler:function(form){
+      $(form).ajaxSubmit();
+      var index = parent.layer.getFrameIndex(window.name);
+      
+      parent.layer.msg('修改成功!',{icon:1,time:1000});
+      
+      
+      window.parent.location.reload();
+
+      
+        
+      parent.layer.close(index);
+      
+      
+      
+
+
+
+      
+    }
+  });
+});
+</script> 
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>

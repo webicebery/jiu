@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>玖酒久</title>
+    <link rel="stylesheet" href="__PUBLIC__/web_public/css/bdsstyle.css">
+    <link rel="stylesheet" href="__PUBLIC__/web_public/css/global.css">
+    <link rel="stylesheet" href="__PUBLIC__/web_public/css/index.css">
+</head>
+<body>
+<div style="position: relative; z-index: 10;">
+    <a href="#"><img src="__PUBLIC__/web_public/pic/head.jpg" width="100%"></a>
+</div>
+<div id="header-tips">
+        <ul class="mn">
+           
+            <li class="menu">
+                <em>更多频道</em><i></i>
+                <ul>
+                    <!--li><a href="javascript:;">批发平台</a></li-->
+                  <li><a target="_blank" href="http://ng.wangjiu.com">集团内购</a></li>
+                  <li><a target="_blank" href="/new/index-cid-126-pageNo-1.html">名庄知识</a></li>
+                  <li><a target="_blank" href="http://bbs.le.com/forum.php?mod=forumdisplay&action=list&fid=1043">酒迷社区</a></li>
+                </ul>
+            </li>
+            <li class="menu">
+                <em>乐视生态</em><i></i>
+                <ul>
+                    <li><a target="_blank" href="http://www.letv.com">乐视网</a></li>
+                    <li><a target="_blank" href="http://www.lemall.com">乐视商城</a></li>
+                </ul>
+            </li>
+            <li><a href="/mall/pick.html" target="_blank" style="color:#ae1219">提货卡</a></li>
+            <li class="menu">
+              <em><a href="/member/club.html">会员俱乐部</a></em><i></i>
+                <ul>
+                    <li><a href="http://bbs.letv.com/forum-1043-1.html" target="_blank">乐迷社区</a></li>
+                </ul>
+            </li>
+            <li class="menu">
+                <em><a href="javascript:void(0)" onclick="goUserCenter()">我的网酒</a></em><i></i>
+                <ul>
+                  <li><a href="javascript:void(0)" onclick="goOrderlist()">我的订单</a></li>
+                  <li><a href="javascript:void(0)" onclick="goCoupon()">我的优惠券</a></li>
+                  <li><a href="javascript:void(0)" onclick="goPick()">我的提货卡</a></li>
+                  <li><a href="javascript:void(0)" onclick="goPoint()">我的积分</a></li>
+                  <li><a href="javascript:void(0)" onclick="goCollection()">我的收藏</a></li>                  
+                </ul>
+            </li>
+            <li id='loginMess' class="app" style="margin-right:15px;">
+                <span>{hi~欢迎来到网酒网}</span><a href="javascript:;" id="qregister">{快速注册}</a> <a id='wjLogin' href="javascript:;">{登录}</a>
+            </li> 
+            
+        </ul>
+        
+    </div>
+    <!-- 下拉框 -->
+    <script>
+            seajs.use("lelib",function(){  
+                Js.login.wjLogin();
+            });
+            function goUserCenter(){
+                Js.login.hasLogin(function(){
+                    window.location.href="/usercenter/index.html";
+                });
+            }
+            function goOrderlist(){
+                Js.login.hasLogin(function(){
+                    window.location.href="/usercenter/orderlist.html";
+                });
+            }
+            function goCoupon(){
+                Js.login.hasLogin(function(){
+                    window.location.href="/usercenter/coupon.html";
+                });
+            }
+            function goPick(){
+                Js.login.hasLogin(function(){
+                    window.location.href="/usercenter/picking.html";
+                });
+            }       
+            function goPoint(){
+                Js.login.hasLogin(function(){
+                    window.location.href="/usercenter/point.html";
+                });
+            }
+            function goCollection(){
+                Js.login.hasLogin(function(){
+                    window.location.href="/usercenter/collection.html";
+                });
+            }
+        </script>   
+
+
+
+
+        <div id="header-mn-z">
+            <div id="header-mn">
+                <a href="/index.html"><div class="logo"></div></a>
+         
+<div id="hd-car">
+    <a href="/cart.html" target="_blank">
+        <div class="car-hd">
+            <div class="car-tw">我的购物车</div>
+            <div class="car-numb topCartNum">0</div>
+            <i></i>
+        </div>
+    </a>
+    <div class="car-mn">
+        <div class="tlt">最新加入的商品</div>
+        <ul class="mn">
+            <div id="loading" class="loading" style="text-align:center">
+                  
+            <div id="contentTop">购物车内无商品</div>
+            
+        </ul>
+        <div class="set">
+           <div class="txt">已选<span class="J_rightCartNum">0</span>件商品，共计<span class="J_rightCartPrice">0.00</span></div>
+            <a class="btn" id="topCart_tuiguang" href="javascript:;">去购物车结算</a>
+        </div>
+    </div>
+</div>
+<script>
+  seajs.use('commonCart');
+</script> 
+        <div id="hd-search">
+            <div class="mn searchClass">
+                 <input id="searchContent" type="text" value="大宴肆方 壕礼不断 怎么买都划算！"  class="search-text">
+                  <a id="searchId"  href="javascript:;" class="search-btn"></a>
+                <div class="search-tips">
+                        <a href="#" target="_blank">葡萄酒</a>
+                        <a href="#" target="_blank">/白酒</a>
+                        <a href="#" target="_blank">/奔富</a>
+                        <a href="#" target="_blank">/拉菲</a>
+                        <a href="#" target="_blank">/轩尼诗</a>
+                        <a href="#" target="_blank">/名庄</a>
+                        <a href="#" target="_blank">/买酒送手机</a>
+                        <a href="#" target="_blank">/格鲁特超值优惠</a>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+</div>
+
+<div id="header-menu-z">
+        <ul id="header-menu">
+            <li class="menuid-z" id="menuid">
+               <a id="shoppingMall" href="/lelist.html" target="_blank">全部商品</a>
+<div id="menuNav" class="menuNav" style="display:none;" >
+  <div class="menu_left">                  
+        <div class="list" data-index="0">
+            <h2 class="iterm01">一键选购</h2>
+        </div>
+        <li gscampaign="导航栏"  gsposition="位置1"><a class="gsexp active" gsexpkey="nav-01-20160824" onclick="return _gsTracker ? _gsTracker.trackInternalLink(this) : true;" href="/index.html">首页</a></li>
+        <li gscampaign="导航栏"  gsposition="位置2"><a class="gsexp " gsexpkey="nav-02-20160824" onclick="return _gsTracker ? _gsTracker.trackInternalLink(this) : true;" target="_blank"  href="/cuchannel-cn-1.html">名庄臻选</a></li>
+        
+        <li gscampaign="导航栏"  gsposition="位置3"><a class="gsexp " gsexpkey="nav-03-20160824" onclick="return _gsTracker ? _gsTracker.trackInternalLink(this) : true;" target="_blank"  href="/mall/fast.html">限时闪购</a></li>
+        <li gscampaign="导航栏"  gsposition="位置4"><a class="gsexp " gsexpkey="nav-04-20160824" onclick="return _gsTracker ? _gsTracker.trackInternalLink(this) : true;" target="_blank"  href="/videostatic.html">乐视美酒</a></li>
+        <li gscampaign="导航栏"  gsposition="位置5"><a class="gsexp " gsexpkey="nav-05-20160824" onclick="return _gsTracker ? _gsTracker.trackInternalLink(this) : true;" target="_blank"  href="/ecology/special.html">乐享生态</a></li>
+        <li gscampaign="导航栏"  gsposition="位置6"><a class="gsexp " gsexpkey="nav-06-20160824" onclick="return _gsTracker ? _gsTracker.trackInternalLink(this) : true;" target="_blank"  href="/partner.html">超级伙伴</a></li>        
+        <li gscampaign="导航栏"  gsposition="位置7"><a class="gsexp " gsexpkey="nav-07-20160824" onclick="return _gsTracker ? _gsTracker.trackInternalLink(this) : true;" target="_blank" href="/rvf2015.html">RVF评分</a></li>      
